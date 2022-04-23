@@ -1,5 +1,5 @@
 import { EditorView, ViewPlugin, ViewUpdate } from "@codemirror/view";
-import { gutter, GutterMarker } from "@codemirror/gutter";
+import { gutter, GutterMarker, highlightActiveLineGutter } from "@codemirror/gutter";
 import { App, editorLivePreviewField, Menu } from "obsidian";
 import { syntaxTree } from "@codemirror/language";
 import { RangeSet, RangeSetBuilder } from "@codemirror/rangeset";
@@ -31,20 +31,28 @@ export function headingMarkerPlugin(app: App, showBeforeLineNumbers: boolean) {
   const markers = ViewPlugin.fromClass(
     class {
       markers: RangeSet<HeadingMarker>;
-
+      
       constructor(public view: EditorView) {
         this.markers = this.buildMarkers(app, view);
       }
-
+      
       buildMarkers(app: App, view: EditorView) {
         const builder = new RangeSetBuilder<HeadingMarker>();
+        const selections = view.state.selection;
         syntaxTree(view.state).iterate({
           enter: (type, from, to) => {
             const headingExp = /header-(\d)$/.exec(type.prop(lineClassNodeProp) ?? "");
             if (headingExp) {
-              const headingLevel = Number(headingExp[1]);
-              const d = new HeadingMarker(app, view, headingLevel, from, to);
-              builder.add(from, to, d);
+              const hidden = !selections?.ranges.every((selection) => {
+                const headerInSelection = (from >= selection.from && from <= selection.to)
+                  || (to >= selection.from && to <= selection.to);
+                return !headerInSelection;
+              })
+              if (!hidden) {
+                const headingLevel = Number(headingExp[1]);
+                const d = new HeadingMarker(app, view, headingLevel, from, to);
+                builder.add(from, to, d);
+              }
             }
           },
         });
@@ -65,6 +73,7 @@ export function headingMarkerPlugin(app: App, showBeforeLineNumbers: boolean) {
   const gutterPrec = showBeforeLineNumbers ? Prec.high : Prec.low;
   return [
     markers,
+    highlightActiveLineGutter(),
     gutterPrec(
       gutter({
         class: "cm-lapel",
