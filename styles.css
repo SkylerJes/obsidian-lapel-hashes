@@ -1,44 +1,59 @@
 .cm-heading-marker {
-  align-items: center;
   color: var(--text-faint);
   cursor: pointer;
   display: inline-block;
-  font-size: 0.7rem;
-  letter-spacing: 0.25px;
-  min-width: 20px;
+  width: 100%;
   text-align: right;
 }
 
 .cm-heading-marker:hover {
   color: var(--text-muted);
-  font-size: 0.7rem;
-  letter-spacing: 0.25px;
 }
 
 .cm-heading-marker[data-level="1"] {
-  --heading-marker: "H1";
+  --heading-marker: "#";
+  font-weight: var(--h1-weight);
+  font-size: var(--h1);
 }
 
 .cm-heading-marker[data-level="2"] {
-  --heading-marker: "H2";
+  --heading-marker: "##";
+  font-weight: var(--h2-weight);
+  font-size: var(--h2);
 }
 
 .cm-heading-marker[data-level="3"] {
-  --heading-marker: "H3";
+  --heading-marker: "###";
+  font-weight: var(--h3-weight);
+  font-size: var(--h3);
 }
 
 .cm-heading-marker[data-level="4"] {
-  --heading-marker: "H4";
+  --heading-marker: "####";
+  font-weight: var(--h4-weight);
+  font-size: var(--h4);
 }
 
 .cm-heading-marker[data-level="5"] {
-  --heading-marker: "H5";
+  --heading-marker: "#####";
+  font-weight: var(--h5-weight);
+  font-size: var(--h5);
 }
 
 .cm-heading-marker[data-level="6"] {
-  --heading-marker: "H6";
+  --heading-marker: "######";
+  font-weight: var(--h6-weight);
+  font-size: var(--h6);
 }
 
 .cm-heading-marker:before {
   content: var(--heading-marker);
+}
+
+.cm-activeLineGutter {
+  background-color: inherit !important;
+}
+
+.cm-activeLineGutter .cm-heading-marker:before{
+  content: "";
 }
