@@ -1,9 +1,9 @@
 {
-  "id": "lapel",
-  "name": "Lapel",
+  "id": "lapel-hashes",
+  "name": "Lapel Hashes",
   "description": "Dress up your editor with decorations that mark each of your headings 🤵",
   "version": "0.0.3",
-  "author": "Liam Cain",
+  "author": "Liam Cain, Skyler Jessee",
   "authorUrl": "https://github.com/liamcain/",
   "isDesktopOnly": false,
   "minAppVersion": "0.13.0"

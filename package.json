@@ -1,5 +1,5 @@
 {
-  "name": "obsidian-lapel",
+  "name": "obsidian-lapel-hashes",
   "version": "0.0.3",
   "description": "Dress up your editor with decorations that mark each of your headings 🤵",
   "author": "liamcain",
@@ -16,28 +16,29 @@
     "@codemirror/view": "0.19.x"
   },
   "dependencies": {
+    "global": "^4.4.0",
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "builtin-modules": "^3.2.0",
+    "@codemirror/basic-setup": "^0.19.0",
+    "@codemirror/buildhelper": "^0.1.0",
     "@codemirror/gutter": "^0.19.9",
+    "@codemirror/lang-css": "^0.19.3",
     "@codemirror/language": "^0.19.3",
     "@codemirror/rangeset": "^0.19.1",
     "@codemirror/state": "^0.19.9",
     "@codemirror/stream-parser": "https://github.com/lishid/stream-parser",
     "@codemirror/view": "^0.19.7",
-    "@codemirror/basic-setup": "^0.19.0",
-    "@codemirror/buildhelper": "^0.1.0",
-    "@codemirror/lang-css": "^0.19.3",
-    "esbuild": "0.13.12",
-    "@types/node": "^16.11.6",
     "@types/lodash": "4.14.179",
+    "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "5.13.0",
     "@typescript-eslint/parser": "5.13.0",
+    "builtin-modules": "^3.2.0",
+    "esbuild": "0.13.12",
     "eslint": "8.3.0",
     "monkey-around": "2.3.0",
     "obsidian": "0.13.26",
-    "typescript": "4.5.2",
-    "tslib": "2.3.1"
+    "tslib": "2.3.1",
+    "typescript": "4.5.2"
   }
 }

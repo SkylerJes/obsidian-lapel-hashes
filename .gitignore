@@ -5,3 +5,7 @@ main.js
 .vscode/
 *.code-workspace
 .DS_Store
+package-lock.json
+yarn.lock
+yarn.lock
+yarn.lock
